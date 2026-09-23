@@ -1,0 +1,61 @@
+name: Compilar APK Android
+
+on:
+  workflow_dispatch: # Permite ejecutar la compilación manualmente con un clic en GitHub
+  push:
+    branches: [ main, master ]
+    paths:
+      - 'mobile/**'
+      - '.github/workflows/build-apk.yml'
+
+jobs:
+  build-apk:
+    name: Compilar APK con Flet y Flutter
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Java JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Configurar Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Instalar Flet CLI y dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install flet
+          pip install -r mobile/requirements.txt
+
+      - name: Verificar herramientas (Flutter Doctor)
+        run: flutter doctor
+
+      - name: Compilar APK de Android
+        run: |
+          cd mobile
+          flet build apk \
+            --project preescolar \
+            --product "Preescolar Bolívar" \
+            --org ve.preescolar \
+            --build-version 1.0.0 \
+            --yes
+
+      - name: Guardar APK como archivo descargable
+        uses: actions/upload-artifact@v4
+        with:
+          name: Preescolar-Bolivar-APK
+          path: mobile/build/apk/*.apk
+          retention-days: 14

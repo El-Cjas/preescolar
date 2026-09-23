@@ -1,0 +1,15 @@
+[90m= [39m[34;4mApp\Models\Persona[39;24m {#8612
+    [34mprefijo[39m: [32m"[39m[32mV[39m[32m"[39m,
+    [34mcedula[39m: [32m"[39m[32m30123456[39m[32m"[39m,
+    [34mnombre[39m: [32m"[39m[32mMateo[39m[32m"[39m,
+    [34mapellido[39m: [32m"[39m[32mRondón[39m[32m"[39m,
+    [34mfecha_nacimiento[39m: [32m"[39m[32m2020-05-14 00:00:00[39m[32m"[39m,
+    [34mgenero[39m: [32m"[39m[32mM[39m[32m"[39m,
+    [34mdireccion[39m: [32m"[39m[32mAv. Bolívar, Casa 4[39m[32m"[39m,
+    [34memail[39m: [32m"[39m[32mmateo@ejemplo.com[39m[32m"[39m,
+    [34mcodigo_tlf[39m: [32m"[39m[32m0414[39m[32m"[39m,
+    [34mnumero_tlf[39m: [32m"[39m[32m1234567[39m[32m"[39m,
+    [34mupdated_at[39m: [32m"[39m[32m2026-09-10 18:38:59[39m[32m"[39m,
+    [34mcreated_at[39m: [32m"[39m[32m2026-09-10 18:38:59[39m[32m"[39m,
+    [34mid[39m: [35m1[39m,
+  }
